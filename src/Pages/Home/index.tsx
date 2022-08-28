@@ -51,7 +51,7 @@ export function Home({ previousData }: IHomeProps) {
     setDatePickerVisibility(false);
   };
 
-  const handleConfirm = date => {
+  const handleConfirm = (date: Date) => {
     const dateFormatted = format(date, 'dd/MM/yyyy');
     setDateStart(dateFormatted);
     hideDatePicker();
@@ -67,7 +67,7 @@ export function Home({ previousData }: IHomeProps) {
 
     const endLooping = addYears(endOfMonth(dateStartParsed), 1);
 
-    const daysJob = {};
+    const daysJob: IMarkedDate = {};
 
     while (isBefore(currentDate, endLooping)) {
       if (isPeriodoJob) {
@@ -98,9 +98,11 @@ export function Home({ previousData }: IHomeProps) {
   };
 
   useEffect(() => {
-    setDateStart(previousData.initialDate);
-    setDayOfJobs(previousData.period);
-    setSelectedDays(previousData.daysJob);
+    if(Object.keys(previousData).length){
+      setDateStart(previousData.initialDate);
+      setDayOfJobs(previousData.period);
+      setSelectedDays(previousData.daysJob);
+    }
   }, [previousData]);
 
   return (
