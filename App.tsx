@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NativeBaseProvider, extendTheme, StatusBar } from 'native-base';
-// import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Home } from './src/Pages/Home';
 import { IMarkedDate } from './src/components/Calendar';
@@ -8,7 +8,7 @@ import { AsynStorageEnum } from './src/enums/AsyncStorage.enum';
 
 const theme = extendTheme({});
 
-// SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync();
 
 export interface IPreviousData {
   initialDate: string;
@@ -34,7 +34,7 @@ export default function App() {
           period,
         });
       }
-      // await SplashScreen.hideAsync();
+      await SplashScreen.hideAsync();
     })();
   }, []);
 
